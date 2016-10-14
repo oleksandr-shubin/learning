@@ -1,6 +1,8 @@
 package model;
 
-public class DiskDrive {
+import java.io.Serializable;
+
+public class DiskDrive implements Serializable {
     private DiskType type;
 
     /**

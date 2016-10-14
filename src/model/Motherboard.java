@@ -1,6 +1,8 @@
 package model;
 
-public class Motherboard {
+import java.io.Serializable;
+
+public class Motherboard implements Serializable {
 
     private String manufacturer;
 

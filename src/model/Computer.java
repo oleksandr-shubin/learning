@@ -1,6 +1,8 @@
 package model;
 
-public class Computer implements Powerable {
+import java.io.Serializable;
+
+public class Computer implements Powerable, Serializable {
 
     private Motherboard motherboard;
 

@@ -1,6 +1,8 @@
 package model;
 
-public class VideoCard {
+import java.io.Serializable;
+
+public class VideoCard implements Serializable {
 
     private String manufacturer;
 

@@ -1,6 +1,8 @@
 package model;
 
-public class RandomAccessMemory {
+import java.io.Serializable;
+
+public class RandomAccessMemory implements Serializable {
 
     private String manufacturer;
 
