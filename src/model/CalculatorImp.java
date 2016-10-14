@@ -1,5 +1,7 @@
 package model;
 
+import com.sun.javaws.exceptions.InvalidArgumentException;
+
 public class CalculatorImp implements Calculator {
     private double firstNum;
     private double secondNum;
@@ -45,6 +47,23 @@ public class CalculatorImp implements Calculator {
     @Override
     public void getSin(double a) {
         result = Math.sin(Math.toRadians(a));
+    }
+
+    @Override
+    public void getMax(int[] arrayOfInts) throws RuntimeException {
+        if (arrayOfInts.length == 0) {
+            throw new RuntimeException("Empty array");
+        }
+
+        result = arrayOfInts[0];
+
+        if (arrayOfInts.length == 1) {
+            return;
+        }
+
+        for (int i = 1; i < arrayOfInts.length; i++) {
+            result = Math.max(result, arrayOfInts[i]);
+        }
     }
 
     @Override
