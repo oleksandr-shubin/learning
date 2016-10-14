@@ -3,14 +3,24 @@ package model;
 import java.io.Serializable;
 
 public class Computer implements Powerable, Serializable {
-
     private Motherboard motherboard;
-
     private RandomAccessMemory randomAccessMemory;
-
     private VideoCard videoCard;
-
     private DiskDrive diskDrive;
+
+    private Calculator calc;
+
+    public Computer() {
+
+    }
+
+    public Computer(Motherboard motherboard, RandomAccessMemory randomAccessMemory,
+                    VideoCard videoCard, DiskDrive diskDrive) {
+        this.motherboard = motherboard;
+        this.randomAccessMemory = randomAccessMemory;
+        this.videoCard = videoCard;
+        this.diskDrive = diskDrive;
+    }
 
     public Motherboard getMotherboard() {
         return motherboard;
@@ -44,16 +54,12 @@ public class Computer implements Powerable, Serializable {
         this.diskDrive = diskDrive;
     }
 
-    public Computer() {
-
+    public Calculator getCalc() {
+        return calc;
     }
 
-    public Computer(Motherboard motherboard, RandomAccessMemory randomAccessMemory,
-                    VideoCard videoCard, DiskDrive diskDrive) {
-        this.motherboard = motherboard;
-        this.randomAccessMemory = randomAccessMemory;
-        this.videoCard = videoCard;
-        this.diskDrive = diskDrive;
+    public void setCalc(Calculator calc) {
+        this.calc = calc;
     }
 
     @Override

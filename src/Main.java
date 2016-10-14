@@ -14,11 +14,6 @@ public class Main {
                 new ComputerBuilderDirectorImp(new MyComputerBuilderImp());
 
         Computer myComp = CompBuildDirector.construct();
-
-        System.out.println(myComp.getDiskDrive());
-        System.out.println(myComp.getMotherboard());
-        System.out.println(myComp.getVideoCard());
-        System.out.println(myComp.getRandomAccessMemory());
     }
 
 }
