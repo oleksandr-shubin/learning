@@ -46,6 +46,14 @@ public class Computer implements Powerable {
 
     }
 
+    public Computer(Motherboard motherboard, RandomAccessMemory randomAccessMemory,
+                    VideoCard videoCard, DiskDrive diskDrive) {
+        this.motherboard = motherboard;
+        this.randomAccessMemory = randomAccessMemory;
+        this.videoCard = videoCard;
+        this.diskDrive = diskDrive;
+    }
+
     @Override
     public void powerOn() {
         System.out.println("Computer is powered on");

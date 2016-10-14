@@ -1,17 +1,22 @@
-import builder.ComputerBuilder;
-import builder.ComputerBuilderDirector;
-import builder.ComputerBuilderDirectorImp;
-import builder.MyComputerBuilderImp;
-import model.Computer;
+import model.*;
 
 public class Main {
 
     public static void main(String[] args) {
+        DiskDrive myDiskDrive = new DiskDrive(DiskType.HARD, 512);
+        Motherboard myMotherboard = new Motherboard("ASUS");
+        RandomAccessMemory myRAM = new RandomAccessMemory("Kingstone", 4);
+        VideoCard myVideoCard = new VideoCard("NVIDIA", "GeForce", 1);
 
-        ComputerBuilderDirector computerBuilderDirector = new ComputerBuilderDirectorImp(new MyComputerBuilderImp());
-        Computer computer = computerBuilderDirector.construct();
+        Computer myComp = new Computer(myMotherboard,
+                myRAM,myVideoCard, myDiskDrive);
 
-        System.out.println(computer);
+        /*
+         * it is excessive to use toString method
+         * as System.out.println(myComp.toString)
+         * is equal to System.out.printLn(myComp)
+         */
+        System.out.println(myComp);
     }
 
 }
