@@ -3,6 +3,12 @@ package model;
 public interface Calculator {
     void getSum();
 
+    void getDifference();
+
+    void getQuotient();
+
+    void getProduct();
+
     void getSqrt(double a);
 
     /**
@@ -10,16 +16,21 @@ public interface Calculator {
      */
     void getSin(double a);
 
-    void printResult();
+    /**
+     * prints last result of certain operation
+     *
+     * @param operation type of operation
+     */
+    void printResult(String operation);
 
     /**
      * finds the max value
      * in  of integers
      *
      * @param arrayOfInts
-     * @throws RuntimeException if array is empty
+     * @throws IllegalArgumentException if array is empty
      */
 
-    void getMax(int[] arrayOfInts) throws RuntimeException;
+    void getMax(int[] arrayOfInts) throws IllegalArgumentException;
 }
 
