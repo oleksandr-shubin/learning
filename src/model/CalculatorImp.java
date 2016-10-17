@@ -1,7 +1,5 @@
 package model;
 
-import com.sun.javaws.exceptions.InvalidArgumentException;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,17 +10,20 @@ public class CalculatorImp implements Calculator {
     private double secondNum;
     // private double result;
 
+    private double[] arrayOfNums;
+
     private Map<String, ArrayList<Double>> results;
 
     {
         results = new HashMap<String, ArrayList<Double>>();
-        results.put("sum", new ArrayList<Double>());
-        results.put("difference", new ArrayList<Double>());
-        results.put("quotient", new ArrayList<Double>());
-        results.put("product", new ArrayList<Double>());
+        results.put("+", new ArrayList<Double>());
+        results.put("-", new ArrayList<Double>());
+        results.put("/", new ArrayList<Double>());
+        results.put("*", new ArrayList<Double>());
         results.put("sqrt", new ArrayList<Double>());
         results.put("sin", new ArrayList<Double>());
         results.put("max", new ArrayList<Double>());
+        results.put("decimalPointPosition", new ArrayList<Double>());
     }
 
     public CalculatorImp() {}
@@ -36,6 +37,7 @@ public class CalculatorImp implements Calculator {
         return firstNum;
     }
 
+    @Override
     public void setFirstNum(double firstNum) {
         this.firstNum = firstNum;
     }
@@ -44,65 +46,84 @@ public class CalculatorImp implements Calculator {
         return secondNum;
     }
 
+    @Override
     public void setSecondNum(double secondNum) {
         this.secondNum = secondNum;
     }
 
+    public double[] getArrayOfNums() {
+        return arrayOfNums;
+    }
+
+    @Override
+    public void setArrayOfNums(double[] arrayOfNums) {
+        this.arrayOfNums = arrayOfNums;
+    }
+
+
     @Override
     public void getSum() {
-        List<Double> sumResults = results.get("sum");
+        List<Double> sumResults = results.get("+");
         sumResults.add(firstNum + secondNum);
     }
 
     @Override
     public void getDifference() {
-        List<Double> differenceResults = results.get("difference");
+        List<Double> differenceResults = results.get("-");
         differenceResults.add(firstNum - secondNum);
     }
 
     @Override
     public void getQuotient() {
-        List<Double> quotientResults = results.get("quotient");
+        List<Double> quotientResults = results.get("/");
         quotientResults.add(firstNum / secondNum);
     }
 
     @Override
     public void getProduct() {
-        List<Double> productResults = results.get("product");
+        List<Double> productResults = results.get("*");
         productResults.add(firstNum * secondNum);
     }
 
     @Override
-    public void getSqrt(double a) {
+    public void getSqrt() {
         List<Double> sqrtResults = results.get("sqrt");
-        sqrtResults.add(Math.sqrt(a));
+        sqrtResults.add(Math.sqrt(firstNum));
     }
 
     @Override
-    public void getSin(double a) {
+    public void getSin() {
         List<Double> sinResults = results.get("sin");
-        sinResults.add(Math.sin(Math.toRadians(a)));
+        sinResults.add(Math.sin(Math.toRadians(firstNum)));
     }
 
     @Override
-    public void getMax(int[] arrayOfInts) throws IllegalArgumentException {
-        if (arrayOfInts.length == 0) {
-            throw new IllegalArgumentException("Empty array provided");
-        }
-
+    public void getMax() {
         List<Double> maxResults = results.get("max");
-        double max = arrayOfInts[0];
+        double max = arrayOfNums[0];
 
-        if (arrayOfInts.length == 1) {
+        if (arrayOfNums.length == 1) {
             maxResults.add(max);
             return;
         }
 
-        for (int i = 1; i < arrayOfInts.length; i++) {
-            max = Math.max(max, arrayOfInts[i]);
+        for (int i = 1; i < arrayOfNums.length; i++) {
+            max = Math.max(max, arrayOfNums[i]);
         }
 
         maxResults.add(max);
+    }
+
+    @Override
+    public boolean getDecimalPointPosition() {
+        // check if number is floating point or not
+        if (firstNum == Math.round(firstNum)) {
+            return false;
+        }
+        List<Double> decimalPointPositionResults = results.get("decimalPointPosition");
+        int index = String.valueOf(firstNum).indexOf(DECIMAL_MARK);
+        decimalPointPositionResults.add(Double.valueOf(index));
+        return true;
     }
 
     @Override
