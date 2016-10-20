@@ -10,6 +10,11 @@ public class DiskDrive implements Serializable {
      */
     private int capacity;
 
+    public DiskDrive(DiskType type, int capacity) {
+        this.type = type;
+        this.capacity = capacity;
+    }
+
     public DiskType getType() {
         return type;
     }
@@ -23,11 +28,6 @@ public class DiskDrive implements Serializable {
     }
 
     public void setCapacity(int capacity) {
-        this.capacity = capacity;
-    }
-
-    public DiskDrive(DiskType type, int capacity) {
-        this.type = type;
         this.capacity = capacity;
     }
 

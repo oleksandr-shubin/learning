@@ -6,15 +6,15 @@ public class Motherboard implements Serializable {
 
     private String manufacturer;
 
+    public Motherboard(String manufacturer) {
+        this.manufacturer = manufacturer;
+    }
+
     public String getManufacturer() {
         return manufacturer;
     }
 
     public void setManufacturer(String manufacturer) {
-        this.manufacturer = manufacturer;
-    }
-
-    public Motherboard(String manufacturer) {
         this.manufacturer = manufacturer;
     }
 

@@ -13,6 +13,12 @@ public class VideoCard implements Serializable {
      */
     private int capacity;
 
+    public VideoCard(String manufacturer, String serie, int capacity) {
+        this.manufacturer = manufacturer;
+        this.serie = serie;
+        this.capacity = capacity;
+    }
+
     public String getManufacturer() {
         return manufacturer;
     }
@@ -34,12 +40,6 @@ public class VideoCard implements Serializable {
     }
 
     public void setCapacity(int capacity) {
-        this.capacity = capacity;
-    }
-
-    public VideoCard(String manufacturer, String serie, int capacity) {
-        this.manufacturer = manufacturer;
-        this.serie = serie;
         this.capacity = capacity;
     }
 

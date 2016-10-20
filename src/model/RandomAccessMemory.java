@@ -11,6 +11,11 @@ public class RandomAccessMemory implements Serializable {
      */
     private int capacity;
 
+    public RandomAccessMemory(String manufacturer, int capacity) {
+        this.manufacturer = manufacturer;
+        this.capacity = capacity;
+    }
+
     public String getManufacturer() {
         return manufacturer;
     }
@@ -24,11 +29,6 @@ public class RandomAccessMemory implements Serializable {
     }
 
     public void setCapacity(int capacity) {
-        this.capacity = capacity;
-    }
-
-    public RandomAccessMemory(String manufacturer, int capacity) {
-        this.manufacturer = manufacturer;
         this.capacity = capacity;
     }
 
