@@ -1,6 +1,7 @@
 package builder;
 
-import model.*;
+import model.computer.Computer;
+import model.computer.component.*;
 
 public class MyComputerBuilderImp implements ComputerBuilder {
 

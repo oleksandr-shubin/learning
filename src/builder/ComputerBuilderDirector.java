@@ -1,6 +1,6 @@
 package builder;
 
-import model.Computer;
+import model.computer.Computer;
 
 public interface ComputerBuilderDirector {
 

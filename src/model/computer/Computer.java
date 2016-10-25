@@ -1,4 +1,10 @@
-package model;
+package model.computer;
+
+import model.computer.component.DiskDrive;
+import model.computer.component.Motherboard;
+import model.computer.component.RandomAccessMemory;
+import model.computer.component.VideoCard;
+import model.computer.program.Calculator;
 
 import java.io.Serializable;
 
@@ -7,8 +13,7 @@ public class Computer implements Powerable, Serializable {
     private RandomAccessMemory randomAccessMemory;
     private VideoCard videoCard;
     private DiskDrive diskDrive;
-
-    private Calculator calc;
+    private Calculator calculator;
 
     public Computer() {
 
@@ -54,12 +59,12 @@ public class Computer implements Powerable, Serializable {
         this.diskDrive = diskDrive;
     }
 
-    public Calculator getCalc() {
-        return calc;
+    public Calculator getCalculator() {
+        return calculator;
     }
 
-    public void setCalc(Calculator calc) {
-        this.calc = calc;
+    public void setCalculator (Calculator calc) {
+        this.calculator = calc;
     }
 
     @Override

@@ -1,4 +1,4 @@
-package model;
+package model.computer.component;
 
 public enum DiskType {
     HARD,
