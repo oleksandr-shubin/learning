@@ -9,8 +9,9 @@ public class FileManager {
         File sourceFile = new File(source);
         File destinationFile = new File(destination);
         if (sourceFile.exists() && destinationFile.exists()) {
-            try (FileReader in = new FileReader(sourceFile);
-                 FileWriter out = new FileWriter(destinationFile)) {
+            try (BufferedReader in = new BufferedReader(new FileReader(sourceFile));
+                 PrintWriter out = new PrintWriter(new BufferedWriter(
+                         new FileWriter(destinationFile)))) {
                 int dataByte;
                 while ((dataByte = in.read()) != -1) {
                     out.write(dataByte);
