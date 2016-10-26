@@ -4,10 +4,12 @@ import model.computer.component.DiskDrive;
 import model.computer.component.Motherboard;
 import model.computer.component.RandomAccessMemory;
 import model.computer.component.VideoCard;
-import model.computer.program.calculator.Calculator;
-import model.computer.program.filemanager.FileManager;
+import model.computer.program.Launchable;
+import model.computer.program.os.OperationSystem;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Computer implements Powerable, Serializable {
     private Motherboard motherboard;
@@ -15,8 +17,8 @@ public class Computer implements Powerable, Serializable {
     private VideoCard videoCard;
     private DiskDrive diskDrive;
 
-    private Calculator calculator;
-    private FileManager fileManager;
+    private Map<String, OperationSystem> operationSystems = new HashMap<>();
+    private OperationSystem activeSystem;
 
     public Computer() {
 
@@ -62,22 +64,6 @@ public class Computer implements Powerable, Serializable {
         this.diskDrive = diskDrive;
     }
 
-    public Calculator getCalculator() {
-        return calculator;
-    }
-
-    public void setCalculator (Calculator calc) {
-        this.calculator = calc;
-    }
-
-    public FileManager getFileManager() {
-        return fileManager;
-    }
-
-    public void setFileManager(FileManager fileManager) {
-        this.fileManager = fileManager;
-    }
-
     @Override
     public void powerOn() {
         System.out.println("Computer is powered on");
@@ -96,4 +82,21 @@ public class Computer implements Powerable, Serializable {
                 "\t" + "randomAccessMemory=" + randomAccessMemory + "\n" +
                 "\t" + "motherboard=" + motherboard;
     }
+
+    public void installOS(String name, OperationSystem os) {
+        this.operationSystems.put(name, os);
+    }
+
+    public void launchOS(String name) {
+        activeSystem = operationSystems.get(name);
+    }
+
+    public void installApplication(String name, Launchable application) {
+        activeSystem.install(name, application);
+    }
+
+    public void launchApplication(String name) {
+        activeSystem.launch(name);
+    }
+
 }
