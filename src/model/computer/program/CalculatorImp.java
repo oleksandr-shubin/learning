@@ -1,6 +1,8 @@
 package model.computer.program;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class CalculatorImp implements Calculator {
     public static final char DECIMAL_MARK = '.';
@@ -45,8 +47,7 @@ public class CalculatorImp implements Calculator {
             case 1:
                 return numbers[0];
             default:
-                List numbersList = Arrays.asList(numbers);
-                return (double) Collections.max(numbersList);
+                return Arrays.stream(numbers).max().getAsDouble();
         }
     }
 
