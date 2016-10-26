@@ -17,6 +17,6 @@ public class Main {
         myComp.installApplication("FileManager", new FileManager());
 
         myComp.launchApplication("Calculator");
-        // myComp.launchApplication("FileManager");
+        myComp.launchApplication("FileManager");
     }
 }

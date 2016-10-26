@@ -2,6 +2,7 @@ package model.computer.program.calculator;
 
 import model.computer.component.DoubleValidator;
 import model.computer.program.Launchable;
+import utills.UnclosableInputStream;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -123,7 +124,7 @@ public class Calculator implements Launchable {
 
     @Override
     public void start() {
-        try (Scanner scanner = new Scanner(System.in)) {
+        try (Scanner scanner = new Scanner(new UnclosableInputStream(System.in))) {
             while (true) {
                 System.out.print("Enter operation (\"+,-,*,/,sin,sqrt,max,dmp for decimalMarkPosition\"): ");
                 String operation = scanner.nextLine().trim();

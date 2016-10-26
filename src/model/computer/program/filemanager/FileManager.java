@@ -2,6 +2,7 @@ package model.computer.program.filemanager;
 
 import com.sun.org.apache.xpath.internal.SourceTree;
 import model.computer.program.Launchable;
+import utills.UnclosableInputStream;
 
 import java.io.*;
 import java.util.Scanner;
@@ -31,7 +32,7 @@ public class FileManager implements Launchable {
 
     @Override
     public void start() {
-        try (Scanner scanner = new Scanner(System.in)) {
+        try (Scanner scanner = new Scanner(new UnclosableInputStream(System.in))) {
             while (true) {
                 System.out.print("Enter name of source file: ");
                 String source = scanner.nextLine().trim();
