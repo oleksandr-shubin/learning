@@ -1,9 +1,6 @@
 package model.computer.program.filemanager;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 
 public class FileManager {
     public FileManager() {}
@@ -12,8 +9,8 @@ public class FileManager {
         File sourceFile = new File(source);
         File destinationFile = new File(destination);
         if (sourceFile.exists() && destinationFile.exists()) {
-            try (FileInputStream in = new FileInputStream(sourceFile);
-                 FileOutputStream out = new FileOutputStream(destinationFile)) {
+            try (FileReader in = new FileReader(sourceFile);
+                 FileWriter out = new FileWriter(destinationFile)) {
                 int dataByte;
                 while ((dataByte = in.read()) != -1) {
                     out.write(dataByte);
