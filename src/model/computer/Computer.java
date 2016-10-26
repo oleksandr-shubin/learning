@@ -5,6 +5,7 @@ import model.computer.component.Motherboard;
 import model.computer.component.RandomAccessMemory;
 import model.computer.component.VideoCard;
 import model.computer.program.calculator.Calculator;
+import model.computer.program.filemanager.FileManager;
 
 import java.io.Serializable;
 
@@ -13,7 +14,9 @@ public class Computer implements Powerable, Serializable {
     private RandomAccessMemory randomAccessMemory;
     private VideoCard videoCard;
     private DiskDrive diskDrive;
+
     private Calculator calculator;
+    private FileManager fileManager;
 
     public Computer() {
 
@@ -65,6 +68,14 @@ public class Computer implements Powerable, Serializable {
 
     public void setCalculator (Calculator calc) {
         this.calculator = calc;
+    }
+
+    public FileManager getFileManager() {
+        return fileManager;
+    }
+
+    public void setFileManager(FileManager fileManager) {
+        this.fileManager = fileManager;
     }
 
     @Override
