@@ -4,7 +4,7 @@ import model.computer.component.DiskDrive;
 import model.computer.component.Motherboard;
 import model.computer.component.RandomAccessMemory;
 import model.computer.component.VideoCard;
-import model.computer.program.Calculator;
+import model.computer.program.calculator.Calculator;
 
 import java.io.Serializable;
 

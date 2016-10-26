@@ -1,9 +1,9 @@
-package model.computer.program;
+package model.computer.program.calculator;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static model.computer.program.OperationType.*;
+import static model.computer.program.calculator.OperationType.*;
 
 public class Operation {
 

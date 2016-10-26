@@ -1,45 +1,38 @@
-package model.computer.program;
+package model.computer.program.calculator;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class CalculatorImp implements Calculator {
+public class Calculator{
     public static final char DECIMAL_MARK = '.';
 
-    public CalculatorImp() {}
+    public Calculator() {}
 
-    @Override
     public double getSum(double firstNumber, double secondNumber) {
         return firstNumber + secondNumber;
     }
 
-    @Override
     public double getDifference(double firstNumber, double secondNumber) {
         return firstNumber - secondNumber;
     }
 
-    @Override
     public double getQuotient(double firstNumber, double secondNumber) {
         return firstNumber / secondNumber;
     }
 
-    @Override
     public double getProduct(double firstNumber, double secondNumber) {
         return firstNumber * secondNumber;
     }
 
-    @Override
     public double getSqrt(double number) {
         return Math.sqrt(number);
     }
 
-    @Override
     public double getSin(double angleInDegrees) {
         return Math.sin(Math.toRadians(angleInDegrees));
     }
 
-    @Override
     public double getMax(double[] numbers) throws IllegalArgumentException {
         switch(numbers.length) {
             case 0:

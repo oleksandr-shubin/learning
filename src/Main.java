@@ -3,8 +3,8 @@ import builder.ComputerBuilderDirectorImp;
 import builder.MyComputerBuilderImp;
 import model.computer.Computer;
 import model.computer.component.DoubleValidator;
-import model.computer.program.CalculatorImp;
-import model.computer.program.Operation;
+import model.computer.program.calculator.Calculator;
+import model.computer.program.calculator.Operation;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -14,7 +14,7 @@ public class Main {
         ComputerBuilderDirector CompBuildDirector =
                 new ComputerBuilderDirectorImp(new MyComputerBuilderImp());
         Computer myComp = CompBuildDirector.construct();
-        CalculatorImp myCalc = new CalculatorImp();
+        Calculator myCalc = new Calculator();
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
