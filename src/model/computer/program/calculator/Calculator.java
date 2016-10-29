@@ -1,6 +1,5 @@
 package model.computer.program.calculator;
 
-import model.computer.component.DoubleValidator;
 import model.computer.program.Launchable;
 
 import java.util.Arrays;

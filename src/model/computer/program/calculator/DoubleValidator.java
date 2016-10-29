@@ -1,4 +1,4 @@
-package model.computer.component;
+package model.computer.program.calculator;
 
 import java.util.regex.Pattern;
 

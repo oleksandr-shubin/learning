@@ -1,9 +1,5 @@
 package model.computer;
 
-import model.computer.component.DiskDrive;
-import model.computer.component.Motherboard;
-import model.computer.component.RandomAccessMemory;
-import model.computer.component.VideoCard;
 import model.computer.program.Launchable;
 import model.computer.program.os.OperationSystem;
 
@@ -12,10 +8,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Computer implements Powerable, Serializable {
-    private Motherboard motherboard;
-    private RandomAccessMemory randomAccessMemory;
-    private VideoCard videoCard;
-    private DiskDrive diskDrive;
+    private String motherboard;
+    private String randomAccessMemory;
+    private String videoCard;
+    private String diskDrive;
 
     private Map<String, OperationSystem> operationSystems = new HashMap<>();
     private OperationSystem activeSystem;
@@ -25,43 +21,35 @@ public class Computer implements Powerable, Serializable {
 
     }
 
-    public Computer(Motherboard motherboard, RandomAccessMemory randomAccessMemory,
-                    VideoCard videoCard, DiskDrive diskDrive) {
-        this.motherboard = motherboard;
-        this.randomAccessMemory = randomAccessMemory;
-        this.videoCard = videoCard;
-        this.diskDrive = diskDrive;
-    }
-
-    public Motherboard getMotherboard() {
+    public String getMotherboard() {
         return motherboard;
     }
 
-    public void setMotherboard(Motherboard motherboard) {
+    public void setMotherboard(String motherboard) {
         this.motherboard = motherboard;
     }
 
-    public RandomAccessMemory getRandomAccessMemory() {
+    public String getRandomAccessMemory() {
         return randomAccessMemory;
     }
 
-    public void setRandomAccessMemory(RandomAccessMemory randomAccessMemory) {
+    public void setRandomAccessMemory(String randomAccessMemory) {
         this.randomAccessMemory = randomAccessMemory;
     }
 
-    public VideoCard getVideoCard() {
+    public String getVideoCard() {
         return videoCard;
     }
 
-    public void setVideoCard(VideoCard videoCard) {
+    public void setVideoCard(String videoCard) {
         this.videoCard = videoCard;
     }
 
-    public DiskDrive getDiskDrive() {
+    public String getDiskDrive() {
         return diskDrive;
     }
 
-    public void setDiskDrive(DiskDrive diskDrive) {
+    public void setDiskDrive(String diskDrive) {
         this.diskDrive = diskDrive;
     }
 

@@ -1,7 +1,6 @@
 package builder;
 
 import model.computer.Computer;
-import model.computer.component.*;
 
 public class MyComputerBuilderImp implements ComputerBuilder {
 
@@ -13,22 +12,22 @@ public class MyComputerBuilderImp implements ComputerBuilder {
 
     @Override
     public void buildDiskDrive() {
-        computer.setDiskDrive(new DiskDrive(DiskType.HARD, 512));
+        computer.setDiskDrive("HITACHI 512 GB");
     }
 
     @Override
     public void buildMotherBoard() {
-        computer.setMotherboard(new Motherboard("ASUS"));
+        computer.setMotherboard("ASUS");
     }
 
     @Override
     public void buildRandomAccessMemory() {
-        computer.setRandomAccessMemory(new RandomAccessMemory("Kingstone", 4));
+        computer.setRandomAccessMemory("KINGSTONE");
     }
 
     @Override
     public void buildVideoCard() {
-        computer.setVideoCard(new VideoCard("NVIDIA", "GeForce", 1));
+        computer.setVideoCard("NVIDIA GeForce 620 GT");
     }
 
     @Override
