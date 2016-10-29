@@ -5,6 +5,7 @@ import model.computer.Computer;
 import model.computer.program.calculator.Calculator;
 import model.computer.program.filemanager.FileManager;
 import model.computer.program.os.Linux;
+import model.store.ComputerStore;
 
 public class Main {
     public static void main(String[] args) {
@@ -17,7 +18,12 @@ public class Main {
         myComp.installApplication("Calculator", new Calculator());
         myComp.installApplication("FileManager", new FileManager());
 
-        myComp.launchApplication("Calculator");
+        // myComp.launchApplication("Calculator");
         // myComp.launchApplication("FileManager");
+
+        ComputerStore computerStore = new ComputerStore();
+        computerStore.printConfigByForEach();
+        computerStore.printConfigByIndex();
+        computerStore.printConfigByIterator();
     }
 }
