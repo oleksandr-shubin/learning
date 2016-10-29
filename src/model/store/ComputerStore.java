@@ -1,34 +1,34 @@
 package model.store;
 
-import model.computer.Computer;
+import model.computer.Desktop;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 
 public class ComputerStore {
-    private List<Computer> catalogComputerList;
+    private List<Desktop> catalogComputerList;
 
     public ComputerStore() {
-        Computer firstComputer = new Computer();
+        Desktop firstComputer = new Desktop();
         firstComputer.setDiskDrive("Transcend 1 TB");
         firstComputer.setMotherboard("ASROCK");
         firstComputer.setRandomAccessMemory("KINGSTON 8 GB");
         firstComputer.setVideoCard("AMD RADEON 9867");
 
-        Computer secondComputer = new Computer();
+        Desktop secondComputer = new Desktop();
         secondComputer.setDiskDrive("ScanDisk 2 TB");
         secondComputer.setMotherboard("ASUS");
         secondComputer.setRandomAccessMemory("KINGSTON 8 GB");
         secondComputer.setVideoCard("NVIDIA GeForce 960MX");
 
-        Computer thirdComputer = new Computer();
+        Desktop thirdComputer = new Desktop();
         thirdComputer.setDiskDrive("HITACHI 12 GB");
         thirdComputer.setMotherboard("Dell XPS");
         thirdComputer.setRandomAccessMemory("KINGSTON 4 GB");
         thirdComputer.setVideoCard("NVIDIA GeForce 830M");
 
-        catalogComputerList = new ArrayList<Computer>();
+        catalogComputerList = new ArrayList<Desktop>();
         catalogComputerList.add(firstComputer);
         catalogComputerList.add(secondComputer);
         catalogComputerList.add(thirdComputer);
@@ -41,14 +41,14 @@ public class ComputerStore {
     }
 
     public void printConfigByIterator() {
-        ListIterator<Computer> iterator = catalogComputerList.listIterator();
+        ListIterator<Desktop> iterator = catalogComputerList.listIterator();
         while (iterator.hasNext()) {
             System.out.println(iterator.next());
         }
     }
 
     public void printConfigByForEach() {
-        for (Computer computer : catalogComputerList) {
+        for (Desktop computer : catalogComputerList) {
             System.out.println(computer);
         }
     }

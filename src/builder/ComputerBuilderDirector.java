@@ -1,8 +1,8 @@
 package builder;
 
-import model.computer.Computer;
+import model.computer.Desktop;
 
 public interface ComputerBuilderDirector {
 
-    Computer construct();
+    Desktop construct();
 }

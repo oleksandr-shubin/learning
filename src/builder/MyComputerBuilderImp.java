@@ -1,13 +1,13 @@
 package builder;
 
-import model.computer.Computer;
+import model.computer.Desktop;
 
 public class MyComputerBuilderImp implements ComputerBuilder {
 
-    private Computer computer;
+    private Desktop computer;
 
     public MyComputerBuilderImp() {
-        computer = new Computer();
+        computer = new Desktop();
     }
 
     @Override
@@ -31,7 +31,7 @@ public class MyComputerBuilderImp implements ComputerBuilder {
     }
 
     @Override
-    public Computer getResult() {
+    public Desktop getResult() {
         return computer;
     }
 }

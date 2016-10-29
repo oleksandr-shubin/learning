@@ -1,6 +1,6 @@
 package builder;
 
-import model.computer.Computer;
+import model.computer.Desktop;
 
 public class ComputerBuilderDirectorImp implements ComputerBuilderDirector {
 
@@ -11,7 +11,7 @@ public class ComputerBuilderDirectorImp implements ComputerBuilderDirector {
     }
 
     @Override
-    public Computer construct() {
+    public Desktop construct() {
 
         computerBuilder.buildDiskDrive();
         computerBuilder.buildMotherBoard();

@@ -1,6 +1,6 @@
 package builder;
 
-import model.computer.Computer;
+import model.computer.Desktop;
 
 public interface ComputerBuilder {
 
@@ -12,5 +12,5 @@ public interface ComputerBuilder {
 
     void buildVideoCard();
 
-    Computer getResult();
+    Desktop getResult();
 }
