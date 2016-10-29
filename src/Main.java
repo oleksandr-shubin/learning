@@ -11,6 +11,7 @@ public class Main {
         ComputerBuilderDirector CompBuildDirector =
                 new ComputerBuilderDirectorImp(new MyComputerBuilderImp());
         Computer myComp = CompBuildDirector.construct();
+        myComp.powerOn();
         myComp.installOS("Linux", new Linux());
         myComp.launchOS("Linux");
         myComp.installApplication("Calculator", new Calculator());

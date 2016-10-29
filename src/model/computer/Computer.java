@@ -19,6 +19,7 @@ public class Computer implements Powerable, Serializable {
 
     private Map<String, OperationSystem> operationSystems = new HashMap<>();
     private OperationSystem activeSystem;
+    private boolean powered;
 
     public Computer() {
 
@@ -66,12 +67,46 @@ public class Computer implements Powerable, Serializable {
 
     @Override
     public void powerOn() {
+        powered = true;
         System.out.println("Computer is powered on");
     }
 
     @Override
     public void powerOff() {
+        powered = false;
         System.out.println("Computer is powered off");
+    }
+
+    public void installOS(String name, OperationSystem os) {
+        if (powered) {
+            operationSystems.put(name, os);
+        } else {
+            throw new ComputerAccessException();
+        }
+    }
+
+    public void launchOS(String name) {
+        if (powered) {
+            activeSystem = operationSystems.get(name);
+        } else {
+            throw new ComputerAccessException();
+        }
+    }
+
+    public void installApplication(String name, Launchable application) {
+        if (powered) {
+            activeSystem.install(name, application);
+        } else {
+            throw new ComputerAccessException();
+        }
+    }
+
+    public void launchApplication(String name) {
+        if (powered) {
+            activeSystem.launch(name);
+        } else {
+            throw new ComputerAccessException();
+        }
     }
 
     @Override
@@ -81,22 +116,6 @@ public class Computer implements Powerable, Serializable {
                 "\t" + "videoCard=" + videoCard + "\n" +
                 "\t" + "randomAccessMemory=" + randomAccessMemory + "\n" +
                 "\t" + "motherboard=" + motherboard;
-    }
-
-    public void installOS(String name, OperationSystem os) {
-        this.operationSystems.put(name, os);
-    }
-
-    public void launchOS(String name) {
-        activeSystem = operationSystems.get(name);
-    }
-
-    public void installApplication(String name, Launchable application) {
-        activeSystem.install(name, application);
-    }
-
-    public void launchApplication(String name) {
-        activeSystem.launch(name);
     }
 
 }
