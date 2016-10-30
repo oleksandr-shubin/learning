@@ -30,4 +30,11 @@ public class Laptop extends AbstractComputer {
     public void printType() {
         System.out.println("Type: laptop");
     }
+
+    @Override
+    public String toString() {
+        return "Laptop:" + "\n" +
+                "\t" + "keyboard=" + keyboard + "\n" +
+                "\t" + "touchpad=" + touchpad;
+    }
 }

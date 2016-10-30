@@ -50,4 +50,11 @@ public class Tablet extends AbstractComputer {
     public void printType() {
         System.out.println("Type: tablet");
     }
+
+    @Override
+    public String toString() {
+        return "Tablet:" + "\n" +
+                "\t" + "sensorType=" + sensorType + "\n" +
+                "\t" + "GSMModule=" + GSMModule;
+    }
 }

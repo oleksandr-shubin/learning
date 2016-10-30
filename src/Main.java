@@ -1,29 +1,31 @@
-import builder.ComputerBuilderDirector;
-import builder.ComputerBuilderDirectorImp;
-import builder.MyComputerBuilderImp;
+import model.computer.Computer;
 import model.computer.Desktop;
-import model.computer.program.calculator.Calculator;
-import model.computer.program.filemanager.FileManager;
-import model.computer.program.os.Linux;
-import model.store.ComputerStore;
+import model.computer.Laptop;
+import model.computer.Tablet;
+import model.store.Cart;
 
 public class Main {
     public static void main(String[] args) {
-        ComputerBuilderDirector CompBuildDirector =
-                new ComputerBuilderDirectorImp(new MyComputerBuilderImp());
-        Desktop myComp = CompBuildDirector.construct();
-        myComp.powerOn();
-        myComp.installOS("Linux", new Linux());
-        myComp.launchOS("Linux");
-        myComp.installApplication("Calculator", new Calculator());
-        myComp.installApplication("FileManager", new FileManager());
 
-        // myComp.launchApplication("Calculator");
-        // myComp.launchApplication("FileManager");
+        Desktop desktop = new Desktop();
+        desktop.setRandomAccessMemory("Kingston 512 GB");
+        desktop.setVideoCard("NVIDIA GeForce 9600 GT");
+        desktop.setMotherboard("ASROCK");
+        desktop.setDiskDrive("SSD 256 GB");
 
-        ComputerStore computerStore = new ComputerStore();
-        computerStore.printConfigByForEach();
-        computerStore.printConfigByIndex();
-        computerStore.printConfigByIterator();
+        Tablet tablet = new Tablet();
+        tablet.setGSMModule("ChinaConnection 3G/GSM");
+        tablet.setSensorType("Resistive");
+
+        Laptop laptop = new Laptop();
+        laptop.setKeyboard("Chicklet with backlight");
+        laptop.setTouchpad("ElanTech");
+
+        Cart<Computer> computersCart = new Cart<>();
+        computersCart.add(desktop);
+        computersCart.add(tablet);
+        computersCart.add(laptop);
+
+        computersCart.printConfigs();
     }
 }
