@@ -27,26 +27,6 @@ public class Tablet extends AbstractComputer {
     }
 
     @Override
-    public void installOS(String name, OperationSystem os) {
-
-    }
-
-    @Override
-    public void launchOS(String name) {
-
-    }
-
-    @Override
-    public void installApplication(String name, Launchable application) {
-
-    }
-
-    @Override
-    public void launchApplication(String name) {
-
-    }
-
-    @Override
     public void printType() {
         System.out.println("Type: tablet");
     }
