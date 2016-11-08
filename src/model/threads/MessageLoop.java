@@ -15,7 +15,8 @@ public class MessageLoop implements Runnable {
         for (String message : messagesArray) {
             try {
                 Thread.sleep(4000);
-                System.out.println(message);
+                System.out.println(Thread.currentThread().getName() +
+                        ": " + message);
             } catch (InterruptedException e) {
                 // logging of exception
             }
