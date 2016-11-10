@@ -10,7 +10,7 @@ public class Main {
         System.out.println(currentThreadName + ": Waiting until the second thread" +
                 " finishes its execution");
         try {
-            auxThread.join();
+            auxThread.join(1000 * 60);
         } catch (InterruptedException e) {
             // logging of exception
         }
