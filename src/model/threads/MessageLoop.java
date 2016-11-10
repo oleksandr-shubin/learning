@@ -18,7 +18,9 @@ public class MessageLoop implements Runnable {
                 System.out.println(Thread.currentThread().getName() +
                         ": " + message);
             } catch (InterruptedException e) {
-                // logging of exception
+                System.out.println(Thread.currentThread().getName() +
+                        ": Task is not completed");
+                return;
             }
         }
     }
