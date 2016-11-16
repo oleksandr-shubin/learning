@@ -47,9 +47,22 @@ public class MethodInspector {
             System.out.println("nil");
         } else {
             for (Annotation annotation : annotations) {
-                System.out.println(annotation.toString());
+                System.out.println(annotation);
             }
         }
+    }
+
+    public void displayAnnotationsExtended() {
+        System.out.println("Method name: " + name);
+        if (annotations.length == 0) {
+            System.out.println("Annotations: nil");
+        } else {
+            System.out.println("Annotations:");
+            for (Annotation annotation : annotations) {
+                System.out.println(annotation);
+            }
+        }
+        System.out.println();
     }
 }
 

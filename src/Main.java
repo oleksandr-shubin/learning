@@ -1,5 +1,6 @@
 import com.sun.org.apache.xpath.internal.SourceTree;
 import model.computer.program.calculator.Calculator;
+import model.reflection.AnnotationTest;
 import model.reflection.MethodInspector;
 import model.threads.MessageLoop;
 
@@ -12,12 +13,11 @@ import java.util.stream.Stream;
 
 public class Main {
 
-    public static void main(String[] args) throws NoSuchMethodException {
-        Thread myThread = new Thread(new MessageLoop());
-        Class myThreadClass = myThread.getClass();
-
-        // getting and inspecting the first method
-        Method firstMethod = myThreadClass.getMethods()[0];
-        new MethodInspector(firstMethod).displayInfo();
+    public static void main(String[] args)  {
+        AnnotationTest annotationTest = new AnnotationTest();
+        Class annotationTestClass = annotationTest.getClass();
+        for (Method method : annotationTestClass.getDeclaredMethods()) {
+            new MethodInspector(method).displayAnnotationsExtended();
+        }
     }
 }
