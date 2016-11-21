@@ -7,9 +7,9 @@ import org.xml.sax.helpers.DefaultHandler;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ComputerHandler extends DefaultHandler {
+public class SaxComputerHandler extends DefaultHandler {
 
-    List<Computer> computers = new ArrayList<Computer>();
+    private List<Computer> computers = new ArrayList<Computer>();
     boolean bTitle = false;
 
     @Override
@@ -40,27 +40,6 @@ public class ComputerHandler extends DefaultHandler {
         for (Computer computer : computers) {
             System.out.println("id: " + computer.getId() +
                     " - title: " + computer.getTitle());
-        }
-    }
-
-    class Computer {
-        private String id;
-        private String title;
-
-        public String getId() {
-            return id;
-        }
-
-        public void setId(String id) {
-            this.id = id;
-        }
-
-        public String getTitle() {
-            return title;
-        }
-
-        public void setTitle(String title) {
-            this.title = title;
         }
     }
 }
