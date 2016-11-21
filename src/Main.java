@@ -1,31 +1,21 @@
-import model.xml.DomComputerHandler;
-import org.w3c.dom.Document;
-import org.xml.sax.SAXException;
+import model.xml.StAXComputerHandler;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.File;
-import java.io.IOException;
+import javax.xml.stream.*;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 
 public class Main {
     public static void main(String[] args) {
-
         try {
-            File inputFile = new File("computerStore.xml");
-            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder builder = factory.newDocumentBuilder();
+            XMLInputFactory factory = XMLInputFactory.newInstance();
+            XMLEventReader eventReader = factory.createXMLEventReader(new FileReader("computerStore.xml"));
 
-            Document document = builder.parse(inputFile);
-            DomComputerHandler domHandler = new DomComputerHandler(document);
-            domHandler.handle();
-            domHandler.displayResult();
-
-        } catch (ParserConfigurationException e) {
+            StAXComputerHandler staxHandler = new StAXComputerHandler(eventReader);
+            staxHandler.handle();
+            staxHandler.displayResult();
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
-        } catch (SAXException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (XMLStreamException e) {
             e.printStackTrace();
         }
     }
