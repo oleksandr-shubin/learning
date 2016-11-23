@@ -45,6 +45,28 @@ public class Calculator implements Launchable {
         }
     }
 
+    public int getFactorial(int number) {
+        return (number == 1 || number == 0)? 1: number * getFactorial(number - 1);
+    }
+
+    public int getFibonacci(int index) {
+        if (index == 0) {
+            return 0;
+        } else if (index == 1) {
+            return 1;
+        } else {
+            return getFibonacci(index - 1) + getFibonacci(index - 2);
+        }
+    }
+
+    public String getFibonacciRow(int number) {
+        String row = "";
+        for (int i = 0; i < number; i++) {
+            row = row.concat(Integer.toString(getFibonacci(i)) + " ");
+        }
+        return row;
+    }
+
     /**
      * tries to find position of decimal mark
      * if number is not floating point returns -1
