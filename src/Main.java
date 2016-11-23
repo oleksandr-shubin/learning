@@ -1,9 +1,10 @@
-import model.computer.program.calculator.Calculator;
+import model.enums.WindRose;
 
 public class Main {
     public static void main(String[] args) {
-        Calculator calculator = new Calculator();
-        System.out.println("5! = " + calculator.getFactorial(5));
-        System.out.println("15 fibonacci numbers : " + calculator.getFibonacciRow(15));
+        for (WindRose direction : WindRose.values()) {
+           System.out.printf("%s : %d degrees, %d rhumbs%n",
+                   direction, direction.getDegrees(), direction.getRhumbs());
+        }
     }
 }
