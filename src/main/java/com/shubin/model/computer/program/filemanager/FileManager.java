@@ -8,13 +8,11 @@ import java.util.Scanner;
 public class FileManager implements Launchable {
     public FileManager() {}
 
-    private void copy(String source, String destination) {
-        File sourceFile = new File(source);
-        File destinationFile = new File(destination);
-        if (sourceFile.exists() && destinationFile.exists()) {
-            try (BufferedReader in = new BufferedReader(new FileReader(sourceFile));
+    public void copy(File source, File destination) {
+        if (source.exists() && destination.exists()) {
+            try (BufferedReader in = new BufferedReader(new FileReader(source));
                  PrintWriter out = new PrintWriter(new BufferedWriter(
-                         new FileWriter(destinationFile)))) {
+                         new FileWriter(destination)))) {
                 int dataByte;
                 while ((dataByte = in.read()) != -1) {
                     out.write(dataByte);
@@ -24,7 +22,7 @@ public class FileManager implements Launchable {
                 e.printStackTrace();
             }
         } else {
-            System.out.println("Create files before you do copy");
+            System.err.println("Create files before you do copy");
         }
     }
 
@@ -33,9 +31,11 @@ public class FileManager implements Launchable {
         try (Scanner scanner = new Scanner(System.in)) {
             while (true) {
                 System.out.print("Enter name of source file: ");
-                String source = scanner.nextLine().trim();
+                String sourceName = scanner.nextLine().trim();
+                File source = new File(sourceName);
                 System.out.print("Enter name of destination file: ");
-                String destination = scanner.nextLine().trim();
+                String destinationName = scanner.nextLine().trim();
+                File destination = new File(destinationName);
 
                 copy(source, destination);
 
@@ -45,7 +45,6 @@ public class FileManager implements Launchable {
                     System.out.println("Application is shutting down...");
                     break;
                 }
-                break;
             }
         }
     }
