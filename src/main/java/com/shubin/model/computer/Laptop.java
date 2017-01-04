@@ -3,6 +3,10 @@ package com.shubin.model.computer;
 public class Laptop extends AbstractComputer {
     private String keyboard;
     private String touchpad;
+    private String battery;
+    private String videoCard;
+    private String randomAccessMemory;
+    private LaptopConfiguration configuration;
 
     public Laptop() {
     }
@@ -23,6 +27,38 @@ public class Laptop extends AbstractComputer {
         this.touchpad = touchpad;
     }
 
+    public String getBattery() {
+        return battery;
+    }
+
+    public void setBattery(String battery) {
+        this.battery = battery;
+    }
+
+    public String getVideoCard() {
+        return videoCard;
+    }
+
+    public void setVideoCard(String videoCard) {
+        this.videoCard = videoCard;
+    }
+
+    public String getRandomAccessMemory() {
+        return randomAccessMemory;
+    }
+
+    public void setRandomAccessMemory(String randomAccessMemory) {
+        this.randomAccessMemory = randomAccessMemory;
+    }
+
+    public LaptopConfiguration getConfiguration() {
+        return configuration;
+    }
+
+    public void setConfiguration(LaptopConfiguration configuration) {
+        this.configuration = configuration;
+    }
+
     @Override
     public void printType() {
         System.out.println("Type: laptop");
@@ -30,8 +66,14 @@ public class Laptop extends AbstractComputer {
 
     @Override
     public String toString() {
-        return "Laptop:" + "\n" +
-                "\t" + "keyboard=" + keyboard + "\n" +
-                "\t" + "touchpad=" + touchpad;
+        return  "Laptop{" +
+                super.toString() +
+                "keyboard='" + keyboard + '\'' +
+                ", touchpad='" + touchpad + '\'' +
+                ", battery='" + battery + '\'' +
+                ", videoCard='" + videoCard + '\'' +
+                ", randomAccessMemory='" + randomAccessMemory + '\'' +
+                ", configuration=" + configuration +
+                '}';
     }
 }

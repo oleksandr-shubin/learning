@@ -8,9 +8,54 @@ import java.util.HashMap;
 import java.util.Map;
 
 public abstract class AbstractComputer implements Computer, Powerable, Serializable {
+    protected int computerId;
+    protected String manufacturer;
+    protected String model;
+    protected int price;
+    protected int amount;
     private boolean powered;
     private Map<String, OperationSystem> operationSystems = new HashMap<>();
     private OperationSystem activeSystem;
+
+    public int getComputerId() {
+        return computerId;
+    }
+
+    public void setComputerId(int computerId) {
+        this.computerId = computerId;
+    }
+
+    public String getManufacturer() {
+        return manufacturer;
+    }
+
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
 
     @Override
     public void powerOn() {
@@ -62,4 +107,14 @@ public abstract class AbstractComputer implements Computer, Powerable, Serializa
 
     @Override
     public abstract void printType();
+
+    @Override
+    public String toString() {
+        return  "computerId=" + computerId +
+                ", manufacturer='" + manufacturer + '\'' +
+                ", model='" + model + '\'' +
+                ", price=" + price +
+                ", amount=" + amount +
+                ", ";
+    }
 }

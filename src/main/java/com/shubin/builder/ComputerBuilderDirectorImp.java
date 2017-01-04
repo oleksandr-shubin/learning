@@ -1,23 +1,21 @@
 package com.shubin.builder;
 
-import com.shubin.model.computer.Desktop;
+import com.shubin.model.computer.Computer;
+import com.shubin.model.computer.parts.Part;
+import com.shubin.model.computer.parts.PartType;
+
+import java.util.Map;
 
 public class ComputerBuilderDirectorImp implements ComputerBuilderDirector {
 
-    private ComputerBuilder computerBuilder;
+    private CustomComputerBuilder customComputerBuilder;
 
-    public ComputerBuilderDirectorImp(ComputerBuilder computerBuilder) {
-        this.computerBuilder = computerBuilder;
+    public ComputerBuilderDirectorImp(CustomComputerBuilder customComputerBuilder) {
+        this.customComputerBuilder = customComputerBuilder;
     }
 
     @Override
-    public Desktop construct() {
-
-        computerBuilder.buildDiskDrive();
-        computerBuilder.buildMotherBoard();
-        computerBuilder.buildRandomAccessMemory();
-        computerBuilder.buildVideoCard();
-
-        return computerBuilder.getResult();
+    public Computer constructComputer(Map<PartType, Part> parts) {
+        return customComputerBuilder.constructComputer(parts);
     }
 }

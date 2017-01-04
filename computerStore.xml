@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <computerstore>
-    <catalogcomputers id="1">
-        <computer id="1">
+    <catalogcomputers partId="1">
+        <computer partId="1">
             <title>Computer1</title>
             <type>Desktop</type>
             <amount>10</amount>
         </computer>
-        <computer id="2">
+        <computer partId="2">
             <title>Computer2</title>
             <type>Laptop</type>
             <amount>20</amount>
         </computer>
-        <computer id="3">
+        <computer partId="3">
             <title>Computer3</title>
             <type>Tablet</type>
             <amount>30</amount>

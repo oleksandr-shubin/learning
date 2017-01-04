@@ -54,7 +54,7 @@ public class Desktop extends AbstractComputer implements Serializable {
         return "Desktop:" + "\n" +
                 "\t" + "diskDrive=" + diskDrive + "\n" +
                 "\t" + "videoCard=" + videoCard + "\n" +
-                "\t" + "randomAccessMemory=" + randomAccessMemory + "\n" +
+                "\t" + "RandomAccessMemory=" + randomAccessMemory + "\n" +
                 "\t" + "motherboard=" + motherboard;
     }
 
