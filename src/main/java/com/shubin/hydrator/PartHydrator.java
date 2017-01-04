@@ -10,11 +10,6 @@ import java.util.List;
 
 public class PartHydrator implements Hydrator<Part> {
     @Override
-    public Part hydrate(ResultSet rs) {
-        return null;
-    }
-
-    @Override
     public List<Part> hydrateList(ResultSet rs) throws SQLException {
         List<Part> parts = new ArrayList<>();
         while (rs.next()) {

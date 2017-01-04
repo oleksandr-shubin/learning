@@ -12,6 +12,7 @@ import com.shubin.service.LaptopService;
 import com.shubin.service.PartService;
 import com.shubin.validator.PartValidator;
 import com.shubin.validator.TransactionValidator;
+import com.sun.xml.internal.bind.v2.runtime.output.SAXOutput;
 
 import java.util.*;
 
@@ -48,7 +49,7 @@ public class ComputerStoreController implements Controller {
                 System.out.println("1 - Gaming");
                 System.out.println("2 - Travel");
                 System.out.println("3 - Custom");
-                int configurationId = scanner.nextInt();
+                int configurationId = Integer.parseInt(scanner.nextLine());;
 
                 switch (configurationId) {
                     case 1:
@@ -63,9 +64,9 @@ public class ComputerStoreController implements Controller {
                                 (ArrayList<Laptop>) laptopService.findByConfiguration(configuration);
                         view.show(laptops);
                         System.out.println("Enter computerId of laptop you want to buy");
-                        int laptopId = scanner.nextInt();
+                        int laptopId = Integer.parseInt(scanner.nextLine());;
                         System.out.println("Enter quantity you want to buy");
-                        int laptopAmount = scanner.nextInt();
+                        int laptopAmount = Integer.parseInt(scanner.nextLine());;
                         if (transactionValidator.validLaptopAmount(laptops, laptopId, laptopAmount)) {
                             Transaction transaction = new Transaction(
                                     laptopId,
@@ -90,11 +91,17 @@ public class ComputerStoreController implements Controller {
                                     .filterPartsByType(parts, partType);
                             System.out.println("Choose " + partType.toString().toLowerCase());
                             view.show(filteredParts);
-                            System.out.println("Enter partId of " + partType.name() + " you want to buy");
-                            int partId = scanner.nextInt();
-                            if (partValidator.validId(filteredParts, partId)) {
-                                Part part = partService.filterPartsById(filteredParts, partId);
-                                choosenParts.put(partType, part);
+                            while (true) {
+                                System.out.println("Enter partId of " + partType.name() + " you want to buy");
+                                int partId = Integer.parseInt(scanner.nextLine());;
+                                if (partValidator.validId(filteredParts, partId)) {
+                                    Part part = partService.filterPartsById(filteredParts, partId);
+                                    choosenParts.put(partType, part);
+                                    break;
+                                } else {
+                                    System.out.println("You entered wrong id, please try again");
+                                    continue;
+                                }
                             }
                         }
 
@@ -104,15 +111,16 @@ public class ComputerStoreController implements Controller {
 
                         System.out.println("Do you really want to buy it?");
                         System.out.println("Enter \"y\" to buy or any other key to cancel");
-                        if (scanner.next().equals("y")) {
+                        if (scanner.nextLine().equals("y")) {
                             computerStoreService.buyCustomLaptop(customLaptop, ANONYMOUS_USER_ID, choosenParts);
+                            System.out.println("Transaction successfully completed");
                         }
                         break;
                     default:
                         break;
                 }
                 System.out.println("Enter q to quit or any other key to continue");
-                String input = scanner.next();
+                String input = scanner.nextLine();
                 if (input.equals("q")) {
                     System.out.println("Application is shutting down...");
                     break;

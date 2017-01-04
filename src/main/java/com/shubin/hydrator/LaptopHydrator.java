@@ -38,14 +38,4 @@ public class LaptopHydrator implements Hydrator<Laptop> {
         }
         return laptops;
     }
-
-    /**
-     * FIXME
-     * @param rs ResultSet from sql SELECT
-     * @return
-     */
-    @Override
-    public Laptop hydrate(ResultSet rs) {
-        return null;
-    }
 }
