@@ -1,5 +1,9 @@
 package com.shubin.model.computer;
 
+import com.shubin.model.computer.power.ButtonSwitcher;
+import com.shubin.model.computer.power.ScreenTapSwitcher;
+
+import javax.xml.bind.SchemaOutputResolver;
 import java.io.Serializable;
 
 public class Desktop extends AbstractComputer implements Serializable {
@@ -9,7 +13,7 @@ public class Desktop extends AbstractComputer implements Serializable {
     private String diskDrive;
 
     public Desktop() {
-
+        switcher = new ButtonSwitcher();
     }
 
     public String getMotherboard() {

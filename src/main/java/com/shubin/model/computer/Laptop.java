@@ -1,5 +1,7 @@
 package com.shubin.model.computer;
 
+import com.shubin.model.computer.power.LidSwitcher;
+
 public class Laptop extends AbstractComputer {
     private String keyboard;
     private String touchpad;
@@ -9,6 +11,7 @@ public class Laptop extends AbstractComputer {
     private LaptopConfiguration configuration;
 
     public Laptop() {
+        switcher = new LidSwitcher();
     }
 
     public String getKeyboard() {

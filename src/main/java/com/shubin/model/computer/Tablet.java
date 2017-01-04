@@ -1,10 +1,13 @@
 package com.shubin.model.computer;
 
+import com.shubin.model.computer.power.ScreenTapSwitcher;
+
 public class Tablet extends AbstractComputer {
     private String sensorType;
     private String GSMModule;
 
     public Tablet() {
+        switcher = new ScreenTapSwitcher();
     }
 
     public String getSensorType() {

@@ -1,5 +1,6 @@
 package com.shubin.model.computer;
 
+import com.shubin.model.computer.power.Powerable;
 import com.shubin.model.computer.program.Launchable;
 import com.shubin.model.computer.program.os.OperationSystem;
 
@@ -7,13 +8,14 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class AbstractComputer implements Computer, Powerable, Serializable {
+public abstract class AbstractComputer implements Computer, Serializable {
     protected int computerId;
     protected String manufacturer;
     protected String model;
     protected int price;
     protected int amount;
-    private boolean powered;
+    private Boolean powered;
+    protected Powerable switcher;
     private Map<String, OperationSystem> operationSystems = new HashMap<>();
     private OperationSystem activeSystem;
 
@@ -57,16 +59,12 @@ public abstract class AbstractComputer implements Computer, Powerable, Serializa
         this.amount = amount;
     }
 
-    @Override
     public void powerOn() {
-        powered = true;
-        System.out.println("Device is powered on");
+        switcher.powerOn(powered);
     }
 
-    @Override
     public void powerOff() {
-        powered = false;
-        System.out.println("Device is powered off");
+        switcher.powerOff(powered);
     }
 
     @Override

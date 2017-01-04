@@ -3,6 +3,7 @@ package com.shubin;
 import com.shubin.controller.ComputerStoreController;
 import com.shubin.locator.ServiceLocator;
 import com.shubin.locator.ServiceLocatorImp;
+import com.shubin.model.computer.*;
 
 public class Main {
     public static void main(String[] args) {
