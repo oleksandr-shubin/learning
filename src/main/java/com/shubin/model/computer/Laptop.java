@@ -69,14 +69,13 @@ public class Laptop extends AbstractComputer {
 
     @Override
     public String toString() {
-        return  "Laptop{" +
+        return  "Laptop: " +
                 super.toString() +
                 "keyboard='" + keyboard + '\'' +
                 ", touchpad='" + touchpad + '\'' +
                 ", battery='" + battery + '\'' +
                 ", videoCard='" + videoCard + '\'' +
                 ", randomAccessMemory='" + randomAccessMemory + '\'' +
-                ", configuration=" + configuration +
-                '}';
+                ", configuration=" + configuration;
     }
 }

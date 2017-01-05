@@ -54,67 +54,10 @@ public class ComputerStoreController implements Controller {
                 switch (configurationId) {
                     case 1:
                     case 2:
-                        LaptopConfiguration configuration;
-                        if (configurationId == 1) {
-                            configuration = LaptopConfiguration.Gaming;
-                        } else {
-                            configuration = LaptopConfiguration.Travel;
-                        }
-                        List<Laptop> laptops =
-                                (ArrayList<Laptop>) laptopService.findByConfiguration(configuration);
-                        view.show(laptops);
-                        System.out.println("Enter computerId of laptop you want to buy");
-                        int laptopId = Integer.parseInt(scanner.nextLine());;
-                        System.out.println("Enter quantity you want to buy");
-                        int laptopAmount = Integer.parseInt(scanner.nextLine());;
-                        if (transactionValidator.validLaptopAmount(laptops, laptopId, laptopAmount)) {
-                            Transaction transaction = new Transaction(
-                                    laptopId,
-                                    ANONYMOUS_USER_ID,
-                                    laptopAmount);
-
-                            computerStoreService.buyLaptop(transaction);
-                            System.out.println("Transaction succeeded");
-                            break;
-                        } else {
-                            System.out.println("Sorry, but you entered wrong amount");
-                            break;
-                        }
+                        sellAvailableLaptop(scanner, configurationId);
+                        break;
                     case 3:
-                        System.out.println("Step by step questions will guide you " +
-                                "to choose parts you want to see in your laptop");
-                        List<Part> parts =
-                                (ArrayList<Part>) partService.findAllAvailableParts();
-                        Map<PartType, Part> choosenParts = new HashMap<>();
-                        for (PartType partType : PartType.values()) {
-                            List<Part> filteredParts = (ArrayList<Part>) partService
-                                    .filterPartsByType(parts, partType);
-                            System.out.println("Choose " + partType.toString().toLowerCase());
-                            view.show(filteredParts);
-                            while (true) {
-                                System.out.println("Enter partId of " + partType.name() + " you want to buy");
-                                int partId = Integer.parseInt(scanner.nextLine());;
-                                if (partValidator.validId(filteredParts, partId)) {
-                                    Part part = partService.filterPartsById(filteredParts, partId);
-                                    choosenParts.put(partType, part);
-                                    break;
-                                } else {
-                                    System.out.println("You entered wrong id, please try again");
-                                    continue;
-                                }
-                            }
-                        }
-
-                        System.out.println("Your computer will have following specs:");
-                        Laptop customLaptop = (Laptop) computerBuilderDirector.constructComputer(choosenParts);
-                        System.out.println(customLaptop);
-
-                        System.out.println("Do you really want to buy it?");
-                        System.out.println("Enter \"y\" to buy or any other key to cancel");
-                        if (scanner.nextLine().equals("y")) {
-                            computerStoreService.buyCustomLaptop(customLaptop, ANONYMOUS_USER_ID, choosenParts);
-                            System.out.println("Transaction successfully completed");
-                        }
+                        sellCustomLaptop(scanner);
                         break;
                     default:
                         break;
@@ -126,6 +69,70 @@ public class ComputerStoreController implements Controller {
                     break;
                 }
             }
+        }
+    }
+
+    private void sellAvailableLaptop(Scanner scanner, int configurationId) {
+        LaptopConfiguration configuration;
+        if (configurationId == 1) {
+            configuration = LaptopConfiguration.Gaming;
+        } else {
+            configuration = LaptopConfiguration.Travel;
+        }
+        List<Laptop> laptops =
+                (ArrayList<Laptop>) laptopService.findByConfiguration(configuration);
+        view.show(laptops);
+        System.out.println("Enter computerId of laptop you want to buy");
+        int laptopId = Integer.parseInt(scanner.nextLine());;
+        System.out.println("Enter quantity you want to buy");
+        int laptopAmount = Integer.parseInt(scanner.nextLine());;
+        if (transactionValidator.validLaptopAmount(laptops, laptopId, laptopAmount)) {
+            Transaction transaction = new Transaction(
+                    laptopId,
+                    ANONYMOUS_USER_ID,
+                    laptopAmount);
+
+            computerStoreService.buyLaptop(transaction);
+            System.out.println("Transaction succeeded");
+        } else {
+            System.out.println("Sorry, but you entered wrong amount");
+        }
+    }
+
+    private void sellCustomLaptop(Scanner scanner) {
+        System.out.println("Step by step questions will guide you " +
+                "to choose parts you want to see in your laptop");
+        List<Part> parts =
+                (ArrayList<Part>) partService.findAllAvailableParts();
+        Map<PartType, Part> choosenParts = new HashMap<>();
+        for (PartType partType : PartType.values()) {
+            List<Part> filteredParts = (ArrayList<Part>) partService
+                    .filterPartsByType(parts, partType);
+            System.out.println("Choose " + partType.toString().toLowerCase());
+            view.show(filteredParts);
+            while (true) {
+                System.out.println("Enter partId of " + partType.name() + " you want to buy");
+                int partId = Integer.parseInt(scanner.nextLine());;
+                if (partValidator.validId(filteredParts, partId)) {
+                    Part part = partService.filterPartsById(filteredParts, partId);
+                    choosenParts.put(partType, part);
+                    break;
+                } else {
+                    System.out.println("You entered wrong id, please try again");
+                    continue;
+                }
+            }
+        }
+
+        System.out.println("Your computer will have following specs:");
+        Laptop customLaptop = (Laptop) computerBuilderDirector.constructComputer(choosenParts);
+        System.out.println(customLaptop);
+
+        System.out.println("Do you really want to buy it?");
+        System.out.println("Enter \"y\" to buy or any other key to cancel");
+        if (scanner.nextLine().equals("y")) {
+            computerStoreService.buyCustomLaptop(customLaptop, ANONYMOUS_USER_ID, choosenParts);
+            System.out.println("Transaction succeeded");
         }
     }
 }
